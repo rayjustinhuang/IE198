@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1486185608492.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "82F0060F",
+    "lastKnownWriteTime" : 3419473789575321445,
+    "last_content_update" : 1486185608492,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "3EDE7D5",
+        "caption" : "innerjoin",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=innerjoin&cache_key=3EDE7D5",
+        "displayedObservations" : 3,
+        "environment" : "",
+        "object" : "innerjoin",
+        "preview" : 0,
+        "totalObservations" : 3,
+        "variables" : 4
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
