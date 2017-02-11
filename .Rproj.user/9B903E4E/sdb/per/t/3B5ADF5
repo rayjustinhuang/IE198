@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "##### Data Preprocessing (continued)\n\n# data cleaning\n# - one of the three biggest problems in data warehousing -Ralph\n# Kimball\n# tasks: fill in missing values, identify outliers, smooth out\n# noisy data, etc.\n\n# missing data may need to be inferred\n\n# handling missing data\n# - ignore the tuple: usually done when class label is missing\n# - fill in missing value/s manually? tedious, infeasible\n# - data imputation: fill it in automatically with: a global \n# constant, the attribute mean, the attribute mean for all \n# samples belonging to the same class\n\n# noisy data - random error or variance in a measured variable\n# incorrect attributes: faulty data, data entry, data \n# transmission, tech limitations, \n\n# handling noisy data: binning, regresssion, clustering, or\n# combined computer and human inspection\n\n# outlier identification\n# inner fence: Q1 or Q3 +- 1.5*IQR ==> beyond: mild outlier\n# outer fence: Q1 or Q3 +- 3*IQR ==> beyond: extreme outlier\n\n# data reduction\n\n# data may not be balanced: e.g. medical data with 9900 negative\n# cases and only 100 positive patients\n\n# solved by:\n# - upsampling: randomly select tuples from minority class to\n#               increase samples (sometimes called bootstrapping)\n# - downsampling: randomly select records from majority class to\n#                 decrease samples\n\n# aggregation: combine 2 or more attributes/objects into \n# single attributes/objects\n\n# sampling\n\n# curse of dimensionality\n# - when dimensionality increases, data becomes increasingly\n# sparse in the space that it occupies\n# - density becomes smaller\n\n# feature subset selection\n\n# feature creation\n\n# using dplyr\nlibrary(dplyr)\n\n# filtering\nflights <- read.csv('flights.csv')\nfiltered <- filter(flights, month == 1, day == 1)\nView(filtered)\n\nfiltered2 <- filter(flights, month == 1 | month == 7)\nView(filtered2)\n\n# slicing\nslice(flights, 1:10)\n\n# arranging\nsorted <- arrange(flights, year, month, day)\nView(sorted)\n\ndescsorted <- arrange(flights, desc(arr_delay))\nView(descsorted)\n\n# selecting certain columns\nselectedcol <- select(flights, year, month, day)\nView(selectedcol)\n\nselectedcol2 <- select(flights, -(year:day))\nView(selectedcol2)\n\n# distinct rows\ndistinct <- distinct(select(flights, origin, dest))\nView(distinct)\n\n# mutating\ndelayed <- mutate(flights,\n                 gain = arr_delay - dep_delay,\n                 speed = distance / air_time * 60,\n                 gain_per_hour = gain / (air_time / 60))\nView(delayed)\n\n# summarize\nmeandelay <- summarise(flights,\n                      delay = mean(dep_delay, na.rm=TRUE))\nView(meandelay)\n\n# grouping\nby_tailnum <- group_by(flights, tailnum)\ndelay <- summarise(by_tailnum,\n                   count = n(),\n                   dist = mean(distance, na.rm = TRUE),\n                   delay = mean(arr_delay, na.rm = TRUE))\ndelay <- filter(delay, count > 20, dist < 2000)\nView(delay)\n\n# summarize and aggregate\ndestinations <- group_by(flights, dest)\ndestsummary <- summarise(destinations,\n                         planes = n_distinct(tailnum),\n                         flights = n(),\n                         delay = mean(dep_delay, na.rm = TRUE))\nView(destsummary)\n\n##### Classification Methodologies\n\n# Zero R - no rule, predict the majority\n\n# One R - one rule, choose rule with smallest total error\n\n# Naive Bayes\n\n",
+    "created" : 1486782560136.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1691179913",
+    "id" : "3B5ADF5",
+    "lastKnownWriteTime" : 1486789857,
+    "last_content_update" : 1486789857544,
+    "path" : "~/UP Files/IE 198/IE 198 Work/IE 198 Lecture 3.R",
+    "project_path" : "IE 198 Lecture 3.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1486787135438.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "11AFA841",
+    "lastKnownWriteTime" : 32651569751457901,
+    "last_content_update" : 1486787135438,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "81CAB570",
+        "caption" : "meandelay",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=meandelay&cache_key=81CAB570",
+        "displayedObservations" : 1,
+        "environment" : "",
+        "object" : "meandelay",
+        "preview" : 0,
+        "totalObservations" : 1,
+        "variables" : 1
+    },
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

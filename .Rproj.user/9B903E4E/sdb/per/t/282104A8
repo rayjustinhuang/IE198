@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1486787487982.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "282104A8",
+    "lastKnownWriteTime" : 7308604914264011873,
+    "last_content_update" : 1486787487982,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "DF6DE5C0",
+        "caption" : "delay",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=delay&cache_key=DF6DE5C0",
+        "displayedObservations" : 2962,
+        "environment" : "",
+        "object" : "delay",
+        "preview" : 0,
+        "totalObservations" : 2962,
+        "variables" : 4
+    },
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

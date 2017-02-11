@@ -1,0 +1,4 @@
+age,workclass,finalweight,education,education-num,marital-status,occupation,relationship,race,sex,capitalgain,capitalloss,hoursperweek,country,income
+27, Private,116358, Some-college,10, Never-married, Craft-repair, Own-child, Asian-Pac-Islander, Male,0,1980,40, Philippines, <=50K
+29, State-gov,71592, Some-college,10, Never-married, Adm-clerical, Unmarried, Asian-Pac-Islander, Female,0,0,40, Philippines, <=50K
+32, Private,270335, Bachelors,13, Married-civ-spouse, Adm-clerical, Other-relative, White, Male,0,0,40, Philippines, >50K
