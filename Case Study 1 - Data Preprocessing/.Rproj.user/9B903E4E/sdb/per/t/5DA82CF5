@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1486906535072.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "5DA82CF5",
+    "lastKnownWriteTime" : 7017490166182847091,
+    "last_content_update" : 1486906535072,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "B7D6BF47",
+        "caption" : "persubsummary",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=persubsummary&cache_key=B7D6BF47",
+        "displayedObservations" : 142091,
+        "environment" : "",
+        "object" : "persubsummary",
+        "preview" : 0,
+        "totalObservations" : 142091,
+        "variables" : 2
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "##### IE 198 Case Study 1: Data Preprocessing\n\n### Part 1: Bank Dataset\n\n# Import dataset\nbankdata <- read.csv(\"bankdata.csv\")\n\n# Check summary statistics\nsummary(bankdata)\nbankints <- data.frame(bankdata$age, bankdata$income, bankdata$children)\nlapply(bankints, sd)\nlapply(bankints, var)\nlapply(bankints, sum)\nlapply(bankints, range)\n\n# Group by PEP, married, and has car\nlibrary(dplyr)\nPEPmarriedcar <- group_by(bankdata, pep, married, car)\nPEPmarriedcarsummary <- summarise(PEPmarriedcar,\n                                  MeanAge = mean(age),\n                                  MeanIncome = mean(income),\n                                  MeanKids = mean(children))\n\n# Generate a histogram for the income variable\nlibrary(ggplot2)\nincomehistogram <- ggplot(data = bankdata, aes(x=income)) +\n  geom_bar(stat='bin', fill='limegreen', color='black') +\n  xlab('Income') + ylab('Frequency') + ggtitle('Histogram of Income')\nincomehistogram\n\n# Generate using R's hist() function\nhist(bankdata$income, ylab = 'Frequency', xlab = 'Income', col = 'limegreen', main = 'Histogram of Income')\n\n# Generate boxplot of income variable by PEP\nincomeboxplot <- ggplot(data = bankdata, aes(x=pep, y=income)) +\n  geom_boxplot(aes(fill=pep)) +\n  theme(legend.title=element_blank()) +\n  xlab('PEP Purchaser') + ylab('Income') +\n  ggtitle('Boxplot of Income vs. PEP')\nincomeboxplot\n\n# Generate boxplot of income by region\nincomebyregion <- ggplot(data = bankdata, aes(x=region, y=income)) +\n  geom_boxplot(aes(fill=region)) +\n  theme(legend.title=element_blank()) +\n  xlab('Region') + ylab('Income') +\n  ggtitle('Boxplot of Income vs. Region')\nincomebyregion\n\n# Generate scatterplot matrix of income, age, and number of children\n# incomeagechildren <- ggplot(data=bankdata, aes(x=age,y=income)) +\n#   geom_point(aes(color=factor(children))) +\n#   xlab('Age') + ylab('Income') + labs(color='Children') +\n#   ggtitle('Income vs. Age and Number of Children')\n# incomeagechildren\n\n# Generate scatterplot matrix of income, age, and number of children\nincomeagechildren <- bankdata[,c('income','age','children')]\npairs(incomeagechildren)\n\nggscatmat(data=bankdata, columns=c('income','age','children'))\n",
+    "created" : 1486888035804.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "877894036",
+    "id" : "F87C202",
+    "lastKnownWriteTime" : 1487158008,
+    "last_content_update" : 1487158008434,
+    "path" : "~/UP Files/IE 198/IE 198 Work/Case Study 1 - Data Preprocessing/Bank Data.R",
+    "project_path" : "Bank Data.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "##### IE 198 Case Study 1: Data Preprocessing\n\n### Part 2: Call Center Datasets\n\ncallcenter2013 <- read.csv('2013.csv')\ncallcenter2014 <- read.csv('2014.csv')\ncallcenter2015 <- read.csv('2015.csv')\n\nlibrary(dplyr)\n\n# Merge the three datasets vertically\ncomplete <- rbind(callcenter2013, callcenter2014, callcenter2015)\n\n# Group by month and year\npermonthyear <- group_by(complete, MONTH, YEAR)\ncallspermonthyear <- summarise(permonthyear,\n                               \"Number of Calls\"=n())\ncallspermonthyear\n\n# Group by month\npermonth <- group_by(complete, MONTH)\ncallspermonth <- summarise(permonth,\n                           MeanCalls = n()/3)\ncallspermonth\n\n# Count invalid calls\ninvalid <- filter(complete, TRANSTYPE == \"INVALID\")\ninvalidpertype <- group_by(invalid, TRANS)\ninvalidpertypesummary <- summarise(invalidpertype,\n                                   Count=n())\ninvalidpertypesummary\n\n# Group by subscriber\npersub <- group_by(complete, SUBID)\npersubsummary <- summarise(persub,\n                           Count=n())\nmean(persubsummary$Count)\n\n# Group then arrange by transaction and transaction count\npertransaction <- complete %>% \n  group_by(TRANS) %>%\n  summarise(TransactionCount = n()) %>%\n  arrange(desc(TransactionCount))\npertransaction\n\n# Group by subscriber and by transaction. Given that time\n# does not matter, repeat calls are the number of calls per sub\n# per transaction minus 1. Then group by subscriber again to get\n# the total number of repeat calls per subscriber. Get the mean\n# of the repeat calls per subscriber to get the answer.\nrepeatcall <- complete %>%\n  group_by(SUBID, TRANS) %>%\n  summarise(RepeatCalls = n()-1) %>%\n  group_by(SUBID) %>%\n  summarise(SubRepeatCalls = sum(RepeatCalls))\nrepeatcall\n# sum(repeatcall$RepeatCalls)/nlevels(repeatcall$TRANS)\nmean(repeatcall$SubRepeatCalls)\n",
+    "created" : 1486904564386.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3085622072",
+    "id" : "147DBC91",
+    "lastKnownWriteTime" : 1486910012,
+    "last_content_update" : 1486910012203,
+    "path" : "~/UP Files/IE 198/IE 198 Work/Case Study 1 - Data Preprocessing/Call Center Data.R",
+    "project_path" : "Call Center Data.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

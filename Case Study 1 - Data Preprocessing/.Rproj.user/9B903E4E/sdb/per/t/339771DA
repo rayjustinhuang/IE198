@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1486904796633.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "339771DA",
+    "lastKnownWriteTime" : 7017490166182847091,
+    "last_content_update" : 1486904796633,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "C7E1C115",
+        "caption" : "callcenter2013",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=callcenter2013&cache_key=C7E1C115",
+        "displayedObservations" : 81674,
+        "environment" : "",
+        "object" : "callcenter2013",
+        "preview" : 0,
+        "totalObservations" : 81674,
+        "variables" : 6
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1486907798065.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "366F32B5",
+    "lastKnownWriteTime" : 4051323354467610424,
+    "last_content_update" : 1486907798065,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "C7766F2A",
+        "caption" : "pertransaction",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=pertransaction&cache_key=C7766F2A",
+        "displayedObservations" : 88,
+        "environment" : "",
+        "object" : "pertransaction",
+        "preview" : 0,
+        "totalObservations" : 88,
+        "variables" : 2
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
