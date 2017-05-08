@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "##### Case 4 - Web Mining\n\ndownload.file(url='http://curl.haxx.se/ca/cacert.pem', destfile=\"cacert.pem\")\n\nlibrary(twitteR)\nlibrary(wordcloud)\nlibrary(tm)\nlibrary(plyr)\nlibrary(stringr)\n\nconsumer_key = 'O8zHuCez3sKue6zD2AeGClREe'\nconsumer_secret = 'Hbdx933zDSgMsED2zFG6mJomM0OWCSxhWpLLTwKaHlzGpr7dGu'\naccess_token = '254104231-AVLEduIxWzSMME9hV9hRVJfoXN72fEGaMHiI72Nh'\naccess_secret = 'Bj131yz4DZthCsx4jg9DdOQRoQMHmfeV0OLN2vgOvtX0s'\n\nsetup_twitter_oauth(consumer_key, consumer_secret, access_token,\n                    access_secret)\n\n#### iPhone 6 vs Galaxy S6\n\niphone.tweets = searchTwitter('#iphone6', lang='en', n=1500)\ngalaxys6.tweets = searchTwitter('#SamsungGalaxyS6', lang='en', n=1500)\n\niphone.text = laply(iphone.tweets, function(t) t$getText())\ngalaxys6.text = laply(galaxys6.tweets, function(t) t$getText())\n\niphone = str_replace_all(iphone.text,'[^[:graph:]]', ' ')\ngalaxys6 = str_replace_all(galaxys6.text,'[^[:graph:]]', ' ')\n\niphone.scores = score.sentiment(iphone, pos.words, neg.words,.progress = 'text')\ngalaxys6.scores = score.sentiment(galaxys6, pos.words, neg.words,.progress = 'text')\n\n# Histogram of scores\npar(mfrow = c(1,2), mar=c(2,2,2,2))\nhist(iphone.scores$score)\nhist(galaxys6.scores$score)\n\n# Mean scores\nAvgiPhoneScore = mean(iphone.scores$score)\nAvggalaxys6Score = mean(galaxys6.scores$score)\n\n# Word clouds\nset.seed(4363)\npar(mfrow = c(1,2), mar=c(2,2,2,2))\nwordcloud(iphone, max.words = 30)\nwordcloud(galaxys6, max.words = 30)\n\n#### Superman vs Batman\nsuperman.tweets = searchTwitter('#Superman', lang='en', n=2000)\nbatman.tweets = searchTwitter('#Batman', lang='en', n=2000)\n\nsuperman.text = laply(superman.tweets, function(t) t$getText())\nbatman.text = laply(batman.tweets, function(t) t$getText())\n\nsuperman = str_replace_all(superman.text, '[^[:graph:]]', ' ')\nbatman = str_replace_all(batman.text, '[^[:graph:]]', ' ')\n\nsuperman.scores = score.sentiment(superman, pos.words, neg.words,.progress = 'text')\nbatman.scores = score.sentiment(batman, pos.words, neg.words,.progress = 'text')\n\nhist(superman.scores$score)\nhist(batman.scores$score)\n\navgsupermanscore = mean(superman.scores$score)\navgbatmanscore = mean(batman.scores$score)\n\nlibrary(RColorBrewer)\n# supermanpalette <- brewer.pal(5, 'RdBu')\n# batmanpalette <- brewer.pal(5, 'PuOr')\n\nsupermanpalette <- c('firebrick1', 'firebrick2', 'firebrick3', 'firebrick4')\nbatmanpalette <- c('dodgerblue1', 'dodgerblue2', 'dodgerblue3', 'dodgerblue4')\n\nwordcloud(superman, max.words = 47, random.order = F, colors = supermanpalette)\nwordcloud(batman, max.words = 47, random.order = F, colors = batmanpalette)\n\n### DC vs Marvel\ndc.tweets = searchTwitter('#DCComics', lang='en', n=2000)\nmarvel.tweets = searchTwitter('#Marvel', lang='en', n=2000)\n\ndc.text = laply(dc.tweets, function(t) t$getText())\nmarvel.text = laply(marvel.tweets, function(t) t$getText())\n\ndc = str_replace_all(dc.text, '[^[:graph:]]', ' ')\nmarvel = str_replace_all(marvel.text, '[^[:graph:]]', ' ')\n\ndc.scores = score.sentiment(dc, pos.words, neg.words,.progress = 'text')\nmarvel.scores = score.sentiment(marvel, pos.words, neg.words,.progress = 'text')\n\nhist(dc.scores$score)\nhist(marvel.scores$score)\n\navgdcscore = mean(dc.scores$score)\navgmarvelscore = mean(marvel.scores$score)\n\ndcpalette <- brewer.pal(5, 'Blues')\nmarvelpalette <- brewer.pal(5, 'Reds')\n\nwordcloud(dc, max.words = 74, random.order = F, colors = batmanpalette)\nwordcloud(marvel, max.words = 74, random.order = F, colors = supermanpalette)\n",
+    "created" : 1494231735413.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3416526213",
+    "id" : "F6843190",
+    "lastKnownWriteTime" : 1494242063,
+    "last_content_update" : 1494242063469,
+    "path" : "~/UP Files/IE 198/IE 198 Work/Case Study 4 - Web Mining/TwitterMining.R",
+    "project_path" : "TwitterMining.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

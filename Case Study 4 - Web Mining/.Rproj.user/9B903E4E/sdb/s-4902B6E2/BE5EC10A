@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "score.sentiment <- function(sentences, pos.words, neg.words, .progress='none')\n{\n  require(plyr)\n  require(stringr)\n  \n  # we got a vector of sentences. plyr will handle a list\n  # or a vector as an \"l\" for us\n  # we want a simple array of scores back, so we use\n  # \"l\" + \"a\" + \"ply\" = \"laply\":\n  scores = laply(sentences, function(sentence, pos.words, neg.words) {\n    \n    # clean up sentences with R's regex-driven global substitute, gsub():\n    sentence = gsub('[[:punct:]]', '', sentence)\n    sentence = gsub('[[:cntrl:]]', '', sentence)\n    sentence = gsub('\\\\d+', '', sentence)\n    # and convert to lower case:\n    sentence = tolower(sentence)\n    \n    # split into words. str_split is in the stringr package\n    word.list = str_split(sentence, '\\\\s+')\n    # sometimes a list() is one level of hierarchy too much\n    words = unlist(word.list)\n    \n    # compare our words to the dictionaries of positive & negative terms\n    pos.matches = match(words, pos.words)\n    neg.matches = match(words, neg.words)\n    \n    # match() returns the position of the matched term or NA\n    # we just want a TRUE/FALSE:\n    pos.matches = !is.na(pos.matches)\n    neg.matches = !is.na(neg.matches)\n    \n    # and conveniently enough, TRUE/FALSE will be treated as 1/0 by sum():\n    score = sum(pos.matches) - sum(neg.matches)\n    \n    return(score)\n  }, pos.words, neg.words, .progress=.progress )\n  \n  scores.df = data.frame(score=scores, text=sentences)\n  return(scores.df)\n}",
+    "created" : 1494233807826.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "869778983",
+    "id" : "BE5EC10A",
+    "lastKnownWriteTime" : 1428752882,
+    "last_content_update" : 1428752882,
+    "path" : "~/UP Files/IE 198/IE 198 Work/Case Study 4 - Web Mining/Sentiment Scorer Function Code.txt",
+    "project_path" : "Sentiment Scorer Function Code.txt",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "text"
+}
