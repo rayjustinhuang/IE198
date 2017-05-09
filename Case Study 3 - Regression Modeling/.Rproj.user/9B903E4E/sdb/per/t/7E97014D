@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# Case Study 3 - Regression Modeling\n\n# Import data\nfull <- read.csv(\"tvdataset.csv\")\nsummary(tvdata)\ntvdata <- subset(full, select = -c(X, name))\nnamereference <- subset(full, select = c(X, name))\nstr(tvdata)\n\n# Reorder (reverse) levels for easier interpretation of coefficients\ntvdata$type <- factor(tvdata$type, levels=rev(levels(tvdata$type)))\n\n# Fit linear regression\nlm <- lm(cost ~ ., data = tvdata)\nsummary(lm)\n\n# Create regression plots\npar(mfrow=c(2,2), mar=c(2,2,2,2))\nplot(lm)\n\n# Detect outliers\nplot(hatvalues(lm))\nabline(h = 10/69, col=\"red\")\nplot(rownames(tvdata), rstudent(lm))\nabline(h=3, col='red')\nrstudent(lm)\n\n# Remove outliers\ntvdata_no <- tvdata[-c(4,11,28,53),]\n\n# Stepwise regression\nbasemodel <- lm(cost ~ 1, data = tvdata_no)\nstepwisem <- step(basemodel, scope = list(lower = ~ 1, upper = ~network+day+length+viewers+d1849rating+facebooklikes+facebooktalkingabout+twitter+age+type, direction = 'both', trace = 1))\n\n# Reduce and standardize dataset\nreduced <- subset(tvdata, select = c(cost, twitter, viewers, day, network, length, d1849rating, facebooklikes, facebooktalkingabout))\noptions(scipen = 100)\nstdreduced <- data.frame(scale(reduced[, c(\"cost\", \"twitter\", \"viewers\", \"length\", \"d1849rating\", \"facebooklikes\", \"facebooktalkingabout\")], center = TRUE, scale = TRUE))\nstdreduced$day <- reduced$day\nstdreduced$network <- reduced$network\n\n# Fit final model\nfinallm <- lm(cost ~ ., data = stdreduced)\nsummary(finallm)\n",
+    "created" : 1492423887134.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2310169046",
+    "id" : "7E97014D",
+    "lastKnownWriteTime" : 1492480370,
+    "last_content_update" : 1492480370283,
+    "path" : "~/UP Files/IE 198/IE 198 Work/Case Study 3 - Regression Modeling/Case 3 - Modeling.R",
+    "project_path" : "Case 3 - Modeling.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
